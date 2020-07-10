@@ -1,6 +1,6 @@
 ---
 name: User Story
-about: Describe this issue template's purpose here.
+about: Define the requested feature
 title: 'New User Story '
 labels: enhancement
 assignees: niuniuanran
