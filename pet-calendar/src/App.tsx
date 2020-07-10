@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import ImageCard from "./components/ImageList/ImageList";
+import ImageCard from "./Components/ImageList/ImageList";
 
 function App() {
   return (
     <div className="App">
-      <ImageCard color="yellow" />
+      <ImageCard query="dog" />
     </div>
   );
 }
