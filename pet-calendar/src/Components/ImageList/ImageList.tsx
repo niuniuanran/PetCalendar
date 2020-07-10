@@ -16,16 +16,14 @@ export default function ImageList(props: IImagePreference) {
       .photos("dogs", 1, 10, { orientation: "landscape" })
       .then(toJson)
       .then((json) => {
-        console.log(json);
         setImageResults(json.results);
-        console.log(imageResults);
       });
   }, []);
   return (
     <div>
       {imageResults.map((result, index) => (
         <div key={index}>
-          <img src={result["urls"]["small"]} />
+          <img src={result["urls"]["small"]} alt={props.query || "pet"} />
         </div>
       ))}
     </div>
