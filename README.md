@@ -1,2 +1,3 @@
-# ColourCalendar
-A calendar application that refreshes you with colour-themed images.
+# PetCalendar
+
+A calendar application that refreshes you with cute pet images.
