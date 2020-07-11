@@ -65,6 +65,7 @@ export default function ImageList(props: IImageListInput) {
                 : classes.thumbnailImage
             }
             onClick={() => props.onClickImage(index)}
+            style={{ cursor: "pointer" }}
           />
 
           <GridListTileBar
