@@ -146,7 +146,10 @@ export default function Calendar() {
         <SettingDialog
           open={true}
           onDialogClose={() => setIsSetting(() => false)}
-          onDialogOK={(newQuery) => setQuery(() => newQuery)}
+          onDialogOK={(newQuery) => {
+            setQuery(() => newQuery);
+            setIsSetting(() => false);
+          }}
         />
       )}
     </div>
