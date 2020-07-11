@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
 import CalendarInfo from "./CalendarInfo";
 import ImageList from "./ImageList";
 import Unsplash, { toJson } from "unsplash-js";
+import { bestReadableColour } from "../../Commons/colour-process";
+import { sampleSize } from "lodash";
+import { IImageInfo } from "../../Commons/interfaces";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
     transition: "0.5s ease",
   },
   calendarInfo: {
-    marginTop: "20px",
+    marginTop: "40px",
+    transition: "0.5s ease",
   },
   mainImageContainer: {
     height: "100%",
@@ -34,27 +37,29 @@ const unsplash = new Unsplash({
 });
 
 export default function Calendar() {
-  const [imageResults, setImageResults] = useState([]);
+  const [imageResults, setImageResults] = useState<IImageInfo[]>([]);
   const [currentFocus, setCurrentFocus] = useState(0);
-  const [backgroundColor, setBackgroundColor] = useState("#fff");
-  const [textColor, setTextColor] = useState("#000");
+  const [backgroundColour, setBackgroundColour] = useState("#fff");
+  const [textColour, setTextColour] = useState("#000");
 
   useEffect(function () {
     unsplash.search
-      .photos("dogs", 1, 10, { orientation: "landscape" })
+      .photos("dogs", 10, 15, { orientation: "landscape" })
       .then(toJson)
       .then((json) => {
-        setImageResults(() => json.results);
+        const results: IImageInfo[] = sampleSize(json.results, 15);
+        setImageResults(() => results);
       });
   }, []);
   useEffect(
     function () {
       const imageColour =
         (imageResults[currentFocus] && imageResults[currentFocus]["color"]) ||
-        "#fffff";
-      setBackgroundColor(() => imageColour);
+        "#fff";
+      setBackgroundColour(imageColour);
+      setTextColour(bestReadableColour(imageColour));
     },
-    [currentFocus]
+    [currentFocus, imageResults]
   );
 
   const classes = useStyles();
@@ -64,13 +69,18 @@ export default function Calendar() {
         container
         className={classes.mainCalendar}
         style={{
-          backgroundColor: backgroundColor,
+          backgroundColor: backgroundColour,
         }}
       >
-        <Grid item xs={10} sm={5} md={4} className={classes.calendarInfo}>
-          <CardContent>
-            <CalendarInfo />
-          </CardContent>
+        <Grid
+          item
+          xs={10}
+          sm={5}
+          md={4}
+          className={classes.calendarInfo}
+          style={{ color: textColour }}
+        >
+          <CalendarInfo />
         </Grid>
         <Grid item xs={10} sm={5} md={6} className={classes.mainImageContainer}>
           <img
