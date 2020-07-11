@@ -4,10 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import CalendarInfo from "./CalendarInfo";
 import ImageList from "./ImageList";
 import Unsplash, { toJson } from "unsplash-js";
-import { bestReadableColour } from "../../Commons/colour-process";
+import { bestReadableColour } from "../Commons/colour-process";
 import { sampleSize } from "lodash";
-import { IImageInfo } from "../../Commons/interfaces";
+import { IImageInfo } from "../Commons/interfaces";
 import SettingsIcon from "@material-ui/icons/Settings";
+import SettingDialog from "./SettingDialog";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -141,6 +142,13 @@ export default function Calendar() {
         onClickImage={(index: number) => setCurrentFocus(() => index)}
         focusIndex={currentFocus}
       />
+      {isSetting && (
+        <SettingDialog
+          open={true}
+          onDialogClose={() => setIsSetting(() => false)}
+          onDialogOK={(newQuery) => setQuery(() => newQuery)}
+        />
+      )}
     </div>
   );
 }

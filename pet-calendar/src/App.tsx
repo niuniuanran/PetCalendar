@@ -1,8 +1,6 @@
 import React from "react";
 import "./App.css";
-// import ImageCard from "./Components/Calendar/ImageList";
-// import CalendarInfo from "./Components/Calendar/CalendarInfo";
-import Calendar from "./Components/Calendar/Calendar";
+import Calendar from "./Components/Calendar";
 
 function App() {
   return (

@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
-import Typography from "@material-ui/core/Typography";
-import { IImageInfo } from "../../Commons/interfaces";
+import { IImageInfo } from "../Commons/interfaces";
+import ImageCredit from "./ImageCredit";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,31 +79,5 @@ export default function ImageList(props: IImageListInput) {
         </GridListTile>
       ))}
     </GridList>
-  );
-}
-
-interface ICreditInfo {
-  username: string;
-  name: string;
-}
-
-function ImageCredit(props: ICreditInfo) {
-  return (
-    <Typography variant="caption" gutterBottom>
-      Photo by{" "}
-      <a
-        href={`https://unsplash.com/@${props.username}?utm_source=${process.env.REACT_APP_NAME}&utm_medium=referral`}
-        style={{ color: "#fff" }}
-      >
-        {props.name}
-      </a>{" "}
-      on{" "}
-      <a
-        href={`https://unsplash.com/?utm_source=${process.env.REACT_APP_NAME}&utm_medium=referral`}
-        style={{ color: "#fff" }}
-      >
-        Unsplash
-      </a>
-    </Typography>
   );
 }
