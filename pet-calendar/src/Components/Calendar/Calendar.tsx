@@ -19,17 +19,31 @@ const useStyles = makeStyles((theme) => ({
   mainCalendar: {
     width: "100vw",
     overflow: "hidden",
-    paddingLeft: "5vw",
+    [theme.breakpoints.up("md")]: {
+      paddingLeft: "5vw",
+    },
     transition: "0.5s ease",
     position: "relative",
   },
   calendarInfo: {
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+      top: "20px",
+      left: "0",
+      backgroundColor: "rgba(255,255,255,0.5)",
+      zIndex: "3",
+      width: "100%",
+      fontSize: "10px",
+    },
     marginTop: "40px",
     transition: "0.5s ease",
   },
   mainImageContainer: {
     height: "100%",
     position: "relative",
+    [theme.breakpoints.down("sm")]: {
+      position: "absolute",
+    },
   },
   mainImage: {
     height: "100%",
@@ -37,12 +51,15 @@ const useStyles = makeStyles((theme) => ({
   settingIcon: {
     position: "absolute",
     bottom: "30px",
-    right: "30px",
+    right: "20px",
     transition: "0.5s ease",
     cursor: "pointer",
-    opacity: "0.2",
+    opacity: "0.3",
     "&:hover": {
       transform: "rotate(45deg)",
+    },
+    [theme.breakpoints.down("sm")]: {
+      opacity: "0.8",
     },
   },
 }));
@@ -89,10 +106,10 @@ export default function Calendar() {
         <Grid
           item
           xs={10}
-          sm={5}
-          md={4}
+          sm={10}
+          md={5}
           className={classes.calendarInfo}
-          style={{ color: textColour }}
+          style={{ color: textColour, position: "relative" }}
         >
           <CalendarInfo />
         </Grid>
