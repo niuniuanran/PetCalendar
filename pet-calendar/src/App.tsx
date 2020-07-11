@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import ImageCard from "./Components/ImageList/ImageList";
+import Calendar from "./Components/Calendar";
 
 function App() {
   return (
     <div className="App">
-      <ImageCard query="dog" />
+      <Calendar />
     </div>
   );
 }
