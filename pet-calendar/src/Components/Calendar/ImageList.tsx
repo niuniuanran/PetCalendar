@@ -1,27 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Unsplash, { toJson } from "unsplash-js";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import Typography from "@material-ui/core/Typography";
-
-interface IImagePreference {
-  query: string | null;
-}
-interface IImageInfo {
-  urls: {
-    regular: string;
-  };
-  color: string;
-  user: {
-    name: string;
-    username: string;
-  };
-}
-const unsplash = new Unsplash({
-  accessKey: process.env.REACT_APP_UNSPLASH_ACCESS_KEY || "",
-});
+import { IImageInfo } from "../../Commons/interfaces";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,39 +31,41 @@ const useStyles = makeStyles((theme) => ({
       filter: "grayscale(0%)",
     },
   },
+  focusImage: {
+    filter: "grayscale(0%)",
+  },
   title: {
     color: theme.palette.primary.light,
   },
   titleBar: {
     background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0) 100%)",
+      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)",
   },
 }));
 
-export default function ImageList(props: IImagePreference) {
+interface IImageListInput {
+  imageList: Array<IImageInfo>;
+  onClickImage: (index: number) => void;
+  focusIndex: number;
+}
+
+export default function ImageList(props: IImageListInput) {
   const classes = useStyles();
-
-  const [imageResults, setImageResults] = useState([]);
-
-  useEffect(function () {
-    unsplash.search
-      .photos("dogs", 1, 10, { orientation: "landscape" })
-      .then(toJson)
-      .then((json) => {
-        console.log(json.results);
-        setImageResults(() => json.results);
-      });
-  }, []);
 
   return (
     <div>
       <GridList className={classes.gridList} cols={4.1} cellHeight={160}>
-        {imageResults.map((result: IImageInfo, index) => (
+        {props.imageList.map((result: IImageInfo, index: number) => (
           <GridListTile key={index}>
             <img
               src={result["urls"]["regular"]}
-              alt={props.query || "pet"}
-              className={classes.thumbnailImage}
+              alt={"pet"}
+              className={
+                index === props.focusIndex
+                  ? classes.focusImage
+                  : classes.thumbnailImage
+              }
+              onClick={() => props.onClickImage(index)}
             />
 
             <GridListTileBar
