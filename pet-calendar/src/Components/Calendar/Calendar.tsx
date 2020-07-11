@@ -7,6 +7,7 @@ import Unsplash, { toJson } from "unsplash-js";
 import { bestReadableColour } from "../../Commons/colour-process";
 import { sampleSize } from "lodash";
 import { IImageInfo } from "../../Commons/interfaces";
+import SettingsIcon from "@material-ui/icons/Settings";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     paddingLeft: "5vw",
     transition: "0.5s ease",
+    position: "relative",
   },
   calendarInfo: {
     marginTop: "40px",
@@ -27,9 +29,21 @@ const useStyles = makeStyles((theme) => ({
   },
   mainImageContainer: {
     height: "100%",
+    position: "relative",
   },
   mainImage: {
     height: "100%",
+  },
+  settingIcon: {
+    position: "absolute",
+    bottom: "30px",
+    right: "30px",
+    transition: "0.5s ease",
+    cursor: "pointer",
+    opacity: "0.2",
+    "&:hover": {
+      transform: "rotate(45deg)",
+    },
   },
 }));
 const unsplash = new Unsplash({
@@ -92,6 +106,11 @@ export default function Calendar() {
             alt=""
           />
         </Grid>
+        <SettingsIcon
+          className={classes.settingIcon}
+          fontSize="large"
+          style={{ color: textColour }}
+        />
       </Grid>
 
       <ImageList
