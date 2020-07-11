@@ -7,8 +7,6 @@ import Calendar from "./Components/Calendar/Calendar";
 function App() {
   return (
     <div className="App">
-      {/* <CalendarInfo />
-      <ImageCard query="dog" /> */}
       <Calendar />
     </div>
   );

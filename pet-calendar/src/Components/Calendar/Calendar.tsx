@@ -72,16 +72,21 @@ export default function Calendar() {
   const [currentFocus, setCurrentFocus] = useState(0);
   const [backgroundColour, setBackgroundColour] = useState("#fff");
   const [textColour, setTextColour] = useState("#000");
+  const [isSetting, setIsSetting] = useState(false);
+  const [query, setQuery] = useState("dogs");
 
-  useEffect(function () {
-    unsplash.search
-      .photos("dogs", 10, 15, { orientation: "landscape" })
-      .then(toJson)
-      .then((json) => {
-        const results: IImageInfo[] = sampleSize(json.results, 15);
-        setImageResults(() => results);
-      });
-  }, []);
+  useEffect(
+    function () {
+      unsplash.search
+        .photos(query, 10, 15, { orientation: "landscape" })
+        .then(toJson)
+        .then((json) => {
+          const results: IImageInfo[] = sampleSize(json.results, 15);
+          setImageResults(() => results);
+        });
+    },
+    [query]
+  );
   useEffect(
     function () {
       const imageColour =
@@ -127,6 +132,7 @@ export default function Calendar() {
           className={classes.settingIcon}
           fontSize="large"
           style={{ color: textColour }}
+          onClick={() => setIsSetting(true)}
         />
       </Grid>
 

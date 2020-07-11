@@ -8,3 +8,9 @@ export interface IImageInfo {
     username: string;
   };
 }
+
+export interface IDialogProps {
+  onDialogClose: () => any;
+  onDialogOK: (result: any) => any;
+  open: boolean | undefined;
+}
