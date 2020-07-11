@@ -1,32 +1,38 @@
-export const petQueries = {
-  dog: {
+export const petQueries = [
+  {
+    title: "Dog",
     query: "dogs dog",
     thumbnail: "dog.jpg",
     credit: { name: "Jamie Street", username: "jamie452" },
   },
-  deer: {
+  {
+    title: "Deer",
     query: "deers deer",
     thumbnail: "deer.jpg",
     credit: { name: "Frederick Tubiermont", username: "callmefred" },
   },
-  cat: {
-    query: "cats cat kitten kittens",
+  {
+    title: "Kitten",
+    query: "kitten kittens cat cats",
     thumbnail: "cat.jpg",
     credit: { name: "Manja Vitolic", username: "madhatterzone" },
   },
-  bunny: {
+  {
+    title: "Bunny",
     query: "bunny bunnies",
     thumbnail: "bunny.jpg",
     credit: { name: "Waranya Mooldee", username: "anyadiary" },
   },
-  pony: {
-    query: "ponies pony",
+  {
+    title: "Pony",
+    query: "horse horses pony",
     thumbnail: "pony.jpg",
     credit: { name: "Soledad Lorieto", username: "sool_lorieto" },
   },
-  lamb: {
-    query: "lamb lambs",
-    thumbnail: "lamb.png",
+  {
+    title: "Lamb",
+    query: "sheep lambs",
+    thumbnail: "lamb.jpg",
     credit: { name: "Bill Fairs", username: "moonboyz" },
   },
-};
+];
