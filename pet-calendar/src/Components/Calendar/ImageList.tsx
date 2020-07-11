@@ -53,34 +53,32 @@ export default function ImageList(props: IImageListInput) {
   const classes = useStyles();
 
   return (
-    <div>
-      <GridList className={classes.gridList} cols={4.1} cellHeight={160}>
-        {props.imageList.map((result: IImageInfo, index: number) => (
-          <GridListTile key={index}>
-            <img
-              src={result["urls"]["regular"]}
-              alt={"pet"}
-              className={
-                index === props.focusIndex
-                  ? classes.focusImage
-                  : classes.thumbnailImage
-              }
-              onClick={() => props.onClickImage(index)}
-            />
+    <GridList className={classes.gridList} cols={4.1} cellHeight={160}>
+      {props.imageList.map((result: IImageInfo, index: number) => (
+        <GridListTile key={index}>
+          <img
+            src={result["urls"]["regular"]}
+            alt={"pet"}
+            className={
+              index === props.focusIndex
+                ? classes.focusImage
+                : classes.thumbnailImage
+            }
+            onClick={() => props.onClickImage(index)}
+          />
 
-            <GridListTileBar
-              title={
-                <ImageCredit
-                  username={result.user.username}
-                  name={result.user.name}
-                />
-              }
-              className={classes.titleBar}
-            />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
+          <GridListTileBar
+            title={
+              <ImageCredit
+                username={result.user.username}
+                name={result.user.name}
+              />
+            }
+            className={classes.titleBar}
+          />
+        </GridListTile>
+      ))}
+    </GridList>
   );
 }
 

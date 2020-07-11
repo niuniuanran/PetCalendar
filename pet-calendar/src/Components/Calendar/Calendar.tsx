@@ -1,39 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
+import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import CalendarInfo from "./CalendarInfo";
 import ImageList from "./ImageList";
 import Unsplash, { toJson } from "unsplash-js";
-import { IImageInfo } from "../../Commons/interfaces";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "grid",
+    paddingTop: "3vh",
+    gridTemplateRows: "70vh auto",
+    gridGap: "3vh",
   },
-  mainCard: {
-    display: "flex",
+  mainCalendar: {
+    width: "100vw",
+    overflow: "hidden",
+    paddingLeft: "5vw",
+    transition: "0.5s ease",
   },
-  details: {
-    display: "flex",
-    flexDirection: "column",
+  calendarInfo: {
+    marginTop: "20px",
   },
-  content: {
-    flex: "1 0 auto",
+  mainImageContainer: {
+    height: "100%",
   },
-  cover: {
-    width: 151,
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
+  mainImage: {
+    height: "100%",
   },
 }));
 const unsplash = new Unsplash({
@@ -43,54 +36,53 @@ const unsplash = new Unsplash({
 export default function Calendar() {
   const [imageResults, setImageResults] = useState([]);
   const [currentFocus, setCurrentFocus] = useState(0);
+  const [backgroundColor, setBackgroundColor] = useState("#fff");
+  const [textColor, setTextColor] = useState("#000");
 
   useEffect(function () {
     unsplash.search
       .photos("dogs", 1, 10, { orientation: "landscape" })
       .then(toJson)
       .then((json) => {
-        console.log(json.results);
         setImageResults(() => json.results);
       });
   }, []);
+  useEffect(
+    function () {
+      const imageColour =
+        (imageResults[currentFocus] && imageResults[currentFocus]["color"]) ||
+        "#fffff";
+      setBackgroundColor(() => imageColour);
+    },
+    [currentFocus]
+  );
 
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Card className={classes.mainCard}>
-        <div className={classes.details}>
-          <CardContent className={classes.content}>
+      <Grid
+        container
+        className={classes.mainCalendar}
+        style={{
+          backgroundColor: backgroundColor,
+        }}
+      >
+        <Grid item xs={10} sm={5} md={4} className={classes.calendarInfo}>
+          <CardContent>
             <CalendarInfo />
           </CardContent>
-          <div className={classes.controls}>
-            {/* <IconButton aria-label="previous">
-              {theme.direction === "rtl" ? (
-                <SkipNextIcon />
-              ) : (
-                <SkipPreviousIcon />
-              )}
-            </IconButton>
-            <IconButton aria-label="play/pause">
-              <PlayArrowIcon className={classes.playIcon} />
-            </IconButton>
-            <IconButton aria-label="next">
-              {theme.direction === "rtl" ? (
-                <SkipPreviousIcon />
-              ) : (
-                <SkipNextIcon />
-              )}
-            </IconButton> */}
-          </div>
-        </div>
-        <CardMedia
-          className={classes.cover}
-          image={
-            imageResults[currentFocus] &&
-            imageResults[currentFocus]["urls"]["regular"]
-          }
-          title="Live from space album cover"
-        />
-      </Card>
+        </Grid>
+        <Grid item xs={10} sm={5} md={6} className={classes.mainImageContainer}>
+          <img
+            src={
+              imageResults[currentFocus] &&
+              imageResults[currentFocus]["urls"]["regular"]
+            }
+            className={classes.mainImage}
+            alt=""
+          />
+        </Grid>
+      </Grid>
 
       <ImageList
         imageList={imageResults}
