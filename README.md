@@ -45,4 +45,4 @@ $ npm install
 $ npm run start
 ```
 
-Now enjoy your pet calendar at (http://localhost:3000/)[http://localhost:3000/].
+Now enjoy your pet calendar at http://localhost:3000/.
