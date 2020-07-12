@@ -7,39 +7,43 @@ trigger:
     exclude:
       - README.md
 
-variables:
-  - group: Unsplash
-  - name: rootDir
-    value: "pet-calendar"
-  - name: buildDir
-    value: "$(rootDir)/build"
+- template: azure-template.yml
+  parameters:
+    buildConfiguration: 'QA'
 
-pool:
-  vmImage: "ubuntu-latest"
+# variables:
+#   - group: Unsplash
+#   - name: rootDir
+#     value: "pet-calendar"
+#   - name: buildDir
+#     value: "$(rootDir)/build"
 
-steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: "10.x"
-    displayName: "Install Node.js"
+# pool:
+#   vmImage: "ubuntu-latest"
 
-  - script: |
-      cd $(rootDir)
-      npm install
-      REACT_APP_UNSPLASH_ACCESS_KEY=$(REACT_APP_UNSPLASH_ACCESS_KEY) REACT_APP_NAME=$(REACT_APP_NAME) npm run build
-      cd ..
-    displayName: "npm install and build"
+# steps:
+#   - task: NodeTool@0
+#     inputs:
+#       versionSpec: "10.x"
+#     displayName: "Install Node.js"
 
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: "$(buildDir)"
-      includeRootFolder: false
-      archiveType: "zip"
-      archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
-      replaceExistingArchive: true
+#   - script: |
+#       cd $(rootDir)
+#       npm install
+#       REACT_APP_UNSPLASH_ACCESS_KEY=$(REACT_APP_UNSPLASH_ACCESS_KEY) REACT_APP_NAME=$(REACT_APP_NAME) npm run build
+#       cd ..
+#     displayName: "npm install and build"
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: "$(Build.ArtifactStagingDirectory)"
-      ArtifactName: "drop"
-      publishLocation: "Container"
+#   - task: ArchiveFiles@2
+#     inputs:
+#       rootFolderOrFile: "$(buildDir)"
+#       includeRootFolder: false
+#       archiveType: "zip"
+#       archiveFile: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
+#       replaceExistingArchive: true
+
+#   - task: PublishBuildArtifacts@1
+#     inputs:
+#       PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+#       ArtifactName: "drop"
+#       publishLocation: "Container"
