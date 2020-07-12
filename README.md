@@ -2,11 +2,33 @@
 
 A calendar application that refreshes you with cute pet images. Go to the site: https://petcalendar.azurewebsites.net/
 
-## NZMSA/2020-Phase-1/Web-App
+## NZMSA/2020-Phase-1
 
-This project is finished as the assignment for [Microsoft Student Accelerator New Zealand 2020 Phase 1 - Web App](https://github.com/NZMSA/2020-Phase-1/tree/master/Web%20App).
+This project is finished as the assignment for two sections of [NZMSA/2020-Phase-1](https://github.com/niuniuanran/2020-Phase-1):
 
-In response to the Assignment requirements:
+- [DevOps - Azure Pipeline](https://github.com/niuniuanran/2020-Phase-1/tree/master/DevOps%20-%20Azure%20Pipeline).
+- [Web-App](https://github.com/NZMSA/2020-Phase-1/tree/master/Web%20App)
+  Detailed responses are as follows:
+
+### DevOps - Azure Pipeline
+
+In response to the DevOps - Azure Pipeline requirements:
+
+- [x] Azure build pipeline: Enable a continuous deployment to create releases on new commits to develop and master branches.
+  - I created a QA Pipeline, [niuniuanran.PetCalendar-QA](https://dev.azure.com/msa-devop-anran/PetCalendar/_build?definitionId=4), which automatically runs upon new commits to BOTH develop and master branches.
+  - The pipeline is defined at [azure-pipelines-QA.yml](https://github.com/niuniuanran/PetCalendar/blob/master/azure-pipelines-QA.yml).
+- [x] Azure release pipeline - Enable a continuous deployment to deploy your release to Azure for new commits to master branch.
+  - I created a production Pipeline, [niuniuanran.PetCalendar-PROD](https://dev.azure.com/msa-devop-anran/PetCalendar/_build?definitionId=3), which automatically runs upon new commits to master branch only.
+  - The pipeline is defined at [azure-pipelines-PROD.yml](https://github.com/niuniuanran/PetCalendar/blob/master/azure-pipelines-PROD.yml).
+- [x] A deployed website on Azure
+  - The link to the deployed website is https://petcalendar.azurewebsites.net/
+- [x] A short description of your build and release pipelines in your project README:
+  - QA Pipeline and PROD Pipeline follow the same steps: Install Node.js -> npm install and build -> archieve files -> publish build artifacts. Therefore, I used a template, [azure-template.yml](https://github.com/niuniuanran/PetCalendar/blob/master/azure-template.yml) to reuse code.
+  - Unsplash requires a secret ACCESS KEY for authorization. I created a Variable Group, [Unsplash](https://dev.azure.com/msa-devop-anran/PetCalendar/_library?itemType=VariableGroups&view=VariableGroupView&variableGroupId=1&path=Unsplash) to make the secret available to the application.
+
+### Web-App
+
+In response to the Web-App requirements:
 
 - [x] Create a new typescript and react web app
 - [x] Connect this application to a different 3rd party REST API
