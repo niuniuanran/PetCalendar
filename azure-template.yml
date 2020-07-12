@@ -14,6 +14,24 @@ steps:
       cd ..
     displayName: "npm install and build"
 
+  - script: |
+      cd $(rootDir)
+      CI=true npm test 
+      cd ..
+    displayName: "run test"
+
+  - script: |
+      cd $(rootDir)
+      npm run coverage
+      cd ..
+    displayName: "test code coverage"
+
+  - task: PublishCodeCoverageResults@1
+    displayName: "Publish code coverage report"
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: $(System.DefaultWorkingDirectory)/$(rootDir)/coverage/cobertura-coverage.xml
+
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: "$(buildDir)"

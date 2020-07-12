@@ -28,6 +28,7 @@ In response to the DevOps - Azure Pipeline requirements:
 - [x] A deployed website on Azure
   - The link to the deployed website is https://petcalendar.azurewebsites.net/
 - [x] A short description of your build and release pipelines in your project README:
+  - I added automated test and coverage report to the build pipelines, which could be viewed at each build.
   - QA Pipeline and PROD Pipeline follow the same steps: Install Node.js -> npm install and build -> archieve files -> publish build artifacts. Therefore, I used a template, [azure-template.yml](https://github.com/niuniuanran/PetCalendar/blob/master/azure-template.yml) to reuse code.
   - Unsplash requires a secret ACCESS KEY for authorization. I created a Variable Group, [Unsplash](https://dev.azure.com/msa-devop-anran/PetCalendar/_library?itemType=VariableGroups&view=VariableGroupView&variableGroupId=1&path=Unsplash) to make the secret available to the application.
 
