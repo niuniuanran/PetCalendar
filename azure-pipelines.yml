@@ -2,8 +2,11 @@ trigger:
   - master
 
 variables:
-  rootDir: "pet-calendar"
-  buildDir: "$(rootDir)/build"
+  - group: Unsplash
+  - name: rootDir
+    value: "pet-calendar"
+  - name: buildDir
+    value: "$(rootDir)/build"
 
 pool:
   vmImage: "ubuntu-latest"
@@ -17,7 +20,7 @@ steps:
   - script: |
       cd $(rootDir)
       npm install
-      npm run build
+      REACT_APP_UNSPLASH_ACCESS_KEY=$(REACT_APP_UNSPLASH_ACCESS_KEY) REACT_APP_NAME=$(REACT_APP_NAME) npm run build
       cd ..
     displayName: "npm install and build"
 
