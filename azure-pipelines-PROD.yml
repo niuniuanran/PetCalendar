@@ -2,11 +2,21 @@ trigger:
   branches:
     include:
       - master
-      - develop
   paths:
     exclude:
       - README.md
 
-- template: azure-template.yml
-  parameters:
-    buildConfiguration: 'PROD'
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  - group: Unsplash
+  - name: rootDir
+    value: "pet-calendar"
+  - name: buildDir
+    value: "$(rootDir)/build"
+
+steps:
+  - template: azure-template.yml
+    parameters:
+      buildConfiguration: "PROD"
