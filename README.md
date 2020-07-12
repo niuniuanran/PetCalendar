@@ -2,6 +2,10 @@
 
 A calendar application that refreshes you with cute pet images. Go to the site: https://petcalendar.azurewebsites.net/
 
+PROD Build: [![Build Status](https://dev.azure.com/msa-devop-anran/PetCalendar/_apis/build/status/niuniuanran.PetCalendar-PROD?branchName=master)](https://dev.azure.com/msa-devop-anran/PetCalendar/_build/latest?definitionId=3&branchName=master)
+
+QA Build: [![Build Status](https://dev.azure.com/msa-devop-anran/PetCalendar/_apis/build/status/niuniuanran.PetCalendar-QA?branchName=master)](https://dev.azure.com/msa-devop-anran/PetCalendar/_build/latest?definitionId=4&branchName=master)
+
 ## NZMSA/2020-Phase-1
 
 This project is finished as the assignment for two sections of NZMSA/2020-Phase-1:
