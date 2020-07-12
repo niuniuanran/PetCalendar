@@ -21,6 +21,15 @@ steps:
       cd ..
     displayName: "npm install and build"
 
+  - task: DownloadSecureFile@1
+    inputs:
+      secureFile: ".env"
+
+  - task: CopyFiles@2
+    inputs:
+      content: "$(Agent.TempDirectory)/.env"
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: "$(buildDir)"
@@ -34,12 +43,3 @@ steps:
       PathtoPublish: "$(Build.ArtifactStagingDirectory)"
       ArtifactName: "drop"
       publishLocation: "Container"
-
-  - task: DownloadSecureFile@1
-    inputs:
-      secureFile: ".env"
-
-  - task: CopyFiles@2
-    inputs:
-      content: "$(Agent.TempDirectory)/.env"
-      targetFolder: $(Build.ArtifactStagingDirectory)
