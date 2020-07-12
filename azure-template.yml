@@ -14,11 +14,11 @@ steps:
       cd ..
     displayName: "npm install and build"
 
-  # - script: |
-  #     cd $(rootDir)
-  #     npm run test
-  #     cd ..
-  #   displayName: "run test"
+  - script: |
+      cd $(rootDir)
+      CI=true npm test 
+      cd ..
+    displayName: "run test"
 
   - task: ArchiveFiles@2
     inputs:
