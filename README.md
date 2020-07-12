@@ -1,6 +1,6 @@
 # PetCalendar
 
-A calendar application that refreshes you with cute pet images.
+A calendar application that refreshes you with cute pet images. Go to the site: https://petcalendar.azurewebsites.net/
 
 ## NZMSA/2020-Phase-1/Web-App
 
@@ -22,6 +22,8 @@ In response to the Assignment requirements:
 <img src="./docs/demo.gif" alt="pet-calendar-demo" width="800px">
 
 ## Run the APP
+
+You could access the application through https://petcalendar.azurewebsites.net/, or alternatively you can build up the application on your machine following these three steps:
 
 ### Step 1: Unsplash API credential
 
