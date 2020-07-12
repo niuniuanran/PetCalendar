@@ -4,11 +4,12 @@ A calendar application that refreshes you with cute pet images. Go to the site: 
 
 ## NZMSA/2020-Phase-1
 
-This project is finished as the assignment for two sections of [NZMSA/2020-Phase-1](https://github.com/niuniuanran/2020-Phase-1):
+This project is finished as the assignment for two sections of NZMSA/2020-Phase-1:
 
 - [DevOps - Azure Pipeline](https://github.com/niuniuanran/2020-Phase-1/tree/master/DevOps%20-%20Azure%20Pipeline).
 - [Web-App](https://github.com/NZMSA/2020-Phase-1/tree/master/Web%20App)
-  Detailed responses are as follows:
+
+Detailed responses are as follows:
 
 ### DevOps - Azure Pipeline
 
