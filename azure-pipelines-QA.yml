@@ -1,11 +1,6 @@
 trigger:
-  branches:
-    include:
-      - master
-      - develop
-  paths:
-    exclude:
-      - README.md
+  - master
+  - develop
 
 pool:
   vmImage: "ubuntu-latest"
