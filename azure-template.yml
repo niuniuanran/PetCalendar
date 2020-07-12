@@ -30,7 +30,7 @@ steps:
     displayName: "Publish code coverage report"
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+      summaryFileLocation: $(System.DefaultWorkingDirectory)/$(rootDir)/coverage/cobertura-coverage.xml
 
   - task: ArchiveFiles@2
     inputs:
