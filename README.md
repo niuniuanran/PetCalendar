@@ -10,11 +10,11 @@ In response to the Assignment requirements:
 
 - [x] Create a new typescript and react web app
 - [x] Connect this application to a different 3rd party REST API
-      This application is connected to [Unsplash Image API](https://unsplash.com/developers) to fetch HD pet images for the user.
+  - This application is connected to [Unsplash Image API](https://unsplash.com/developers) to fetch HD pet images for the user.
 - [x] Allow users to input information that will be utilised by the API
-      User will be able to choose from six pets, which the API uses to search for pet images.
+  - User will be able to choose from six pets, which the API uses to search for pet images.
 - [x] Make use of a UI library like Material-UI.
-      A range of Material-UI components are used to improve the visual expression and responsiveness of the Application.
+  - A range of Material-UI components are used to improve the visual expression and responsiveness of the Application.
 - [x] Utilise source control through GitHub.
 
 ## Screen Shot
