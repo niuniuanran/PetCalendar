@@ -85,6 +85,7 @@ export default function Calendar() {
           const results: IImageInfo[] = sampleSize(json.results, 15);
           setImageResults(() => results);
         });
+      setCurrentFocus(() => 0);
     },
     [query]
   );
