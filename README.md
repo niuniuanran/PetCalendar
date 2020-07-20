@@ -13,8 +13,6 @@ This project is finished as the assignment for two sections of NZMSA/2020-Phase-
 - [DevOps - Azure Pipeline](https://github.com/niuniuanran/2020-Phase-1/tree/master/DevOps%20-%20Azure%20Pipeline).
 - [Web-App](https://github.com/NZMSA/2020-Phase-1/tree/master/Web%20App)
 
-For each sections, the required Microsoft Learn modules have been completed - see details in my [Microsoft Learn Profile - Achievements](https://docs.microsoft.com/en-us/users/anranniu-3747/achievements).
-
 Detailed responses are as follows:
 
 ### DevOps - Azure Pipeline
